@@ -1,0 +1,6 @@
+
+	BOARD_SIZE = 4;
+
+	TILE_PADDING = 15;
+
+	TILE_SIZE = 106;
