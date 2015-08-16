@@ -52,6 +52,45 @@ var Board = cc.Sprite.extend({
     _withinBounds: function(position) {
         return position.xPos >= 0 && position.xPos < BOARD_SIZE &&
             position.yPos >= 0 && position.yPos < BOARD_SIZE;
-    }
+    },
 
+    cellContent:function(cell){
+        if(this._withinBounds(cell)){
+            return this._cells[cell.xPos][cell.yPos];
+        }   else {
+            return null;
+        }
+    },
+
+    cellAvailable : function(cell){
+        return !this.cellOccupied(cell);
+    },
+
+    cellOccupied: function(cell){
+        return !!this.cellContent(cell);
+    },
+
+
+
+    findFarthestPosition : function(cell,vector){
+        var previous;
+
+        do{
+            previous = cell;
+            cell = {
+                xPos: previous.xPos + vector.xPos, yPos: previous.yPos + vector.yPos
+            };
+        }   while (this._withinBounds(cell) && this.cellAvailable(cell));
+
+        return {
+            farthest : previous,
+            next : cell
+        };
+    },
+
+    moveTile: function(tile, cell) {
+        this._cells[tile.xPos][tile.yPos] = null;
+        this._cells[cell.xPos][cell.yPos] = tile;
+        tile.updatePosition(cell);
+    },
 })

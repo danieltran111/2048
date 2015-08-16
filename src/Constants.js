@@ -4,3 +4,8 @@
 	TILE_PADDING = 15;
 
 	TILE_SIZE = 106;
+
+	var KEY_LEFT_CODE = 37;
+	var KEY_UP_CODE = 38;
+	var KEY_RIGHT_CODE = 39;
+	var KEY_DOWN_CODE = 40;

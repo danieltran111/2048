@@ -83,5 +83,12 @@ var Tile = cc.Sprite.extend({
                 this._hexLbColor = '#f9f6f2';
                 this._hexBgColor = '#3c3a32';
                 this._fontSize = 32;
-    }}
+    }},
+
+    updatePosition: function(position) {
+        this.xPos = position.xPos;
+        this.yPos = position.yPos;
+
+        this.setTilePosition(this.xPos, this.yPos);
+    },
 })
